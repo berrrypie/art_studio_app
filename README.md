@@ -1,1 +1,1 @@
-This is an educational project of a student of Svsu in the discipline "Software development Technologies". During the course, the mvp of the website project for the art studio will be developed
+This is an educational project of a student of Svsu in the discipline "Software development Technologies". During the course, the mvp of the website project for the art studio will be developed.
