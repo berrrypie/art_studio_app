@@ -1,0 +1,14 @@
+<%= link_to "Courses", :courses %>
+<%= link_to "New course", new_course_path %>
+<%= link_to "Profile", :profile %>
+
+<h1>Courses</h1>
+
+<div id="courses">
+  <% @courses.each do |course| %>
+    <%= render course %>
+    <p>
+      <%= link_to "Show this course", course %>
+    </p>
+  <% end %>
+</div>

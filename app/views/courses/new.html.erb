@@ -1,0 +1,13 @@
+<%= link_to "Courses", :courses %>
+<%= link_to "New course", new_course_path %>
+<%= link_to "Profile", :profile %>
+
+<h1>New course</h1>
+
+<%= render "form", course: @course %>
+
+<br>
+
+<div>
+  <%= link_to "Back to courses", courses_path %>
+</div>

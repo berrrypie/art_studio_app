@@ -4391,3 +4391,1582 @@ Migrating to AddDeviseToUsers (20231127164234)
   [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-12-05 18:02:28 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 15ms (ActiveRecord: 0.0ms | Allocations: 2140)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:02:28 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 344)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 38.4ms | Allocations: 4423)
+  Rendered layout layouts/application.html.erb (Duration: 146.3ms | Allocations: 40602)
+Completed 200 OK in 349ms (Views: 182.9ms | ActiveRecord: 13.7ms | Allocations: 64167)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-05 18:02:36 +0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 222)
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 128)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2229)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 4251)
+Completed 200 OK in 71ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 10848)
+
+
+Started POST "/users" for ::1 at 2023-12-05 18:03:09 +0300
+Processing by Users::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"paliostomi@yandex.ru", "first_name"=>"Анастасия", "last_name"=>"Маяковская", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Зарегистирироваться!"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "paliostomi@yandex.ru"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "created_at", "updated_at", "encrypted_password", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Анастасия"], ["last_name", "Маяковская"], ["email", "paliostomi@yandex.ru"], ["created_at", "2023-12-05 15:03:09.526522"], ["updated_at", "2023-12-05 15:03:09.526522"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 273ms (ActiveRecord: 5.8ms | Allocations: 14624)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:03:09 +0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:3:in `index'
+Redirected to http://localhost:3000/users/edit
+Completed 302 Found in 9ms (ActiveRecord: 0.7ms | Allocations: 1453)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:03:09 +0300
+Processing by Users::RegistrationsController#edit as TURBO_STREAM
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2320)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 4340)
+Completed 200 OK in 22ms (Views: 16.9ms | ActiveRecord: 0.3ms | Allocations: 6277)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:03:16 +0300
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 262)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 2373)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.0ms | Allocations: 3071)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:03:20 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1528)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 3579)
+Completed 200 OK in 20ms (Views: 15.1ms | ActiveRecord: 0.3ms | Allocations: 5300)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:03:27 +0300
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 68)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2086)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 2360)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2023-12-05 18:04:12 +0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 11ms (ActiveRecord: 0.3ms | Allocations: 2559)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:04:13 +0300
+Processing by HomeController#index as TURBO_STREAM
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 390)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:04:13 +0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.8ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 926)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 2940)
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 3557)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-12-05 18:04:35 +0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"paliostomi@yandex.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "paliostomi@yandex.ru"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 211ms (ActiveRecord: 0.3ms | Allocations: 2816)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:04:35 +0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:3:in `index'
+Redirected to http://localhost:3000/users/edit
+Completed 302 Found in 7ms (ActiveRecord: 0.2ms | Allocations: 993)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:04:35 +0300
+Processing by Users::RegistrationsController#edit as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1537)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 3556)
+Completed 200 OK in 16ms (Views: 10.1ms | ActiveRecord: 0.2ms | Allocations: 5284)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:04:39 +0300
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 2086)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 2358)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:05:06 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1527)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3544)
+Completed 200 OK in 16ms (Views: 10.5ms | ActiveRecord: 0.3ms | Allocations: 5256)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:09:31 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 214)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 8.9ms | Allocations: 2459)
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 16087)
+Completed 200 OK in 54ms (Views: 41.7ms | ActiveRecord: 3.6ms | Allocations: 22713)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:10:08 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 214)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 12.1ms | Allocations: 2419)
+  Rendered layout layouts/application.html.erb (Duration: 41.2ms | Allocations: 16053)
+Completed 200 OK in 63ms (Views: 49.4ms | ActiveRecord: 3.4ms | Allocations: 22595)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:10:48 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 214)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2419)
+  Rendered layout layouts/application.html.erb (Duration: 34.1ms | Allocations: 16037)
+Completed 200 OK in 56ms (Views: 44.3ms | ActiveRecord: 3.2ms | Allocations: 22660)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:10:52 +0300
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 259)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 2404)
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.0ms | Allocations: 3092)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:12:13 +0300
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 264)
+Started GET "/users/edit" for ::1 at 2023-12-05 18:12:14 +0300
+  Rendered layout layouts/application.html.erb (Duration: 31.6ms | Allocations: 14366)
+Completed 200 OK in 44ms (Views: 38.7ms | ActiveRecord: 0.0ms | Allocations: 15313)
+
+
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.9ms | Allocations: 214)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 7.3ms | Allocations: 2423)
+  Rendered layout layouts/application.html.erb (Duration: 31.5ms | Allocations: 16053)
+Completed 200 OK in 54ms (Views: 40.8ms | ActiveRecord: 3.7ms | Allocations: 22624)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:12:16 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1493)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 3510)
+Completed 200 OK in 14ms (Views: 10.4ms | ActiveRecord: 0.2ms | Allocations: 5225)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:12:39 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 214)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2394)
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | Allocations: 16023)
+Completed 200 OK in 54ms (Views: 40.3ms | ActiveRecord: 3.3ms | Allocations: 22624)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:12:56 +0300
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 255)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 2366)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.0ms | Allocations: 3053)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2023-12-05 18:13:00 +0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 8ms (ActiveRecord: 0.2ms | Allocations: 2132)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:13:00 +0300
+Processing by HomeController#index as TURBO_STREAM
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 443)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:13:00 +0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 319)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1524)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 3575)
+Completed 200 OK in 18ms (Views: 14.7ms | ActiveRecord: 0.0ms | Allocations: 4429)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-05 18:13:08 +0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 127)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1755)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 3772)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.0ms | Allocations: 4568)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:13:12 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 924)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 2937)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 3541)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-05 18:13:14 +0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 116)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1315)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3332)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.0ms | Allocations: 3959)
+
+
+Started POST "/users" for ::1 at 2023-12-05 18:13:50 +0300
+Processing by Users::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"a@a.a", "first_name"=>"Биба", "last_name"=>"Бобовна", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Зарегистирироваться!"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "created_at", "updated_at", "encrypted_password", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Биба"], ["last_name", "Бобовна"], ["email", "a@a.a"], ["created_at", "2023-12-05 15:13:50.993347"], ["updated_at", "2023-12-05 15:13:50.993347"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 223ms (ActiveRecord: 4.4ms | Allocations: 6178)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:13:51 +0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:3:in `index'
+Redirected to http://localhost:3000/users/edit
+Completed 302 Found in 6ms (ActiveRecord: 0.2ms | Allocations: 1012)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:13:51 +0300
+Processing by Users::RegistrationsController#edit as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1518)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 3536)
+Completed 200 OK in 17ms (Views: 11.9ms | ActiveRecord: 0.2ms | Allocations: 5343)
+
+
+Started DELETE "/users" for ::1 at 2023-12-05 18:13:58 +0300
+Processing by Users::RegistrationsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (4.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 15ms (ActiveRecord: 5.2ms | Allocations: 4405)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:13:58 +0300
+Processing by HomeController#index as TURBO_STREAM
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 399)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:13:59 +0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 927)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 2941)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 3555)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-12-05 18:18:51 +0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"paliostomi@yandex.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "paliostomi@yandex.ru"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 218ms (ActiveRecord: 4.5ms | Allocations: 7001)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:18:52 +0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:3:in `index'
+Redirected to http://localhost:3000/users/edit
+Completed 302 Found in 7ms (ActiveRecord: 0.3ms | Allocations: 1054)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:18:52 +0300
+Processing by Users::RegistrationsController#edit as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 213)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2435)
+  Rendered layout layouts/application.html.erb (Duration: 32.6ms | Allocations: 16064)
+Completed 200 OK in 46ms (Views: 42.0ms | ActiveRecord: 0.2ms | Allocations: 18649)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:18:55 +0300
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 255)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 2366)
+Completed 200 OK in 15ms (Views: 12.6ms | ActiveRecord: 0.0ms | Allocations: 3051)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:18:59 +0300
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 68)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 2120)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 2392)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:19:09 +0300
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 268)
+  Rendered layout layouts/application.html.erb (Duration: 28.4ms | Allocations: 13914)
+Completed 200 OK in 37ms (Views: 33.8ms | ActiveRecord: 0.0ms | Allocations: 14860)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:21:24 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 214)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2383)
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 4477)
+Completed 200 OK in 29ms (Views: 23.3ms | ActiveRecord: 0.2ms | Allocations: 7021)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:21:34 +0300
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 2086)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 2359)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:21:38 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1476)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 3493)
+Completed 200 OK in 17ms (Views: 12.1ms | ActiveRecord: 0.2ms | Allocations: 5208)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:21:46 +0300
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 2086)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.0ms | Allocations: 2358)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:21:48 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1476)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 3493)
+Completed 200 OK in 16ms (Views: 11.2ms | ActiveRecord: 0.2ms | Allocations: 5208)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:24:29 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 214)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2446)
+  Rendered layout layouts/application.html.erb (Duration: 34.3ms | Allocations: 16074)
+Completed 200 OK in 58ms (Views: 45.4ms | ActiveRecord: 3.9ms | Allocations: 22687)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:24:34 +0300
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 255)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 2366)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 3053)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:24:36 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1479)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 3496)
+Completed 200 OK in 17ms (Views: 12.8ms | ActiveRecord: 0.2ms | Allocations: 5200)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:24:38 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1478)
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 3518)
+Completed 200 OK in 20ms (Views: 15.7ms | ActiveRecord: 0.2ms | Allocations: 5244)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:38:36 +0300
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 2105)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 2377)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2023-12-05 18:38:39 +0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 7ms (ActiveRecord: 0.4ms | Allocations: 2153)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:38:39 +0300
+Processing by HomeController#index as TURBO_STREAM
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 437)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:38:39 +0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 319)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1524)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 3541)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.0ms | Allocations: 4417)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:38:42 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 924)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 2939)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 3551)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-05 18:42:20 +0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 127)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1754)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 3771)
+Completed 200 OK in 17ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 4551)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:43:12 +0300
+Processing by Users::RegistrationsController#edit as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 273)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:43:12 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 922)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 2936)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 3573)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-12-05 18:43:39 +0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"paliostomi@yandex.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "paliostomi@yandex.ru"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/edit
+Completed 303 See Other in 222ms (ActiveRecord: 1.5ms | Allocations: 2688)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:43:39 +0300
+Processing by Users::RegistrationsController#edit as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1525)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 3543)
+Completed 200 OK in 17ms (Views: 11.3ms | ActiveRecord: 0.3ms | Allocations: 5297)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:43:44 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1478)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 3496)
+Completed 200 OK in 15ms (Views: 10.7ms | ActiveRecord: 0.3ms | Allocations: 5183)
+
+
+Started GET "/profile" for ::1 at 2023-12-05 18:46:14 +0300
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProfilesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 68)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 2086)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 2358)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2023-12-05 18:47:46 +0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 8ms (ActiveRecord: 1.1ms | Allocations: 1750)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:47:46 +0300
+Processing by HomeController#index as TURBO_STREAM
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 7ms (ActiveRecord: 0.0ms | Allocations: 393)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:47:46 +0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 927)
+  Rendered layout layouts/application.html.erb (Duration: 24.7ms | Allocations: 2951)
+Completed 200 OK in 31ms (Views: 25.9ms | ActiveRecord: 0.0ms | Allocations: 3562)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:48:53 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 924)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 2962)
+Completed 200 OK in 15ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 3578)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:48:59 +0300
+Processing by Users::RegistrationsController#edit as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 272)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:48:59 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.8ms | Allocations: 922)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 2948)
+Completed 200 OK in 25ms (Views: 20.8ms | ActiveRecord: 0.0ms | Allocations: 3595)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:49:39 +0300
+Processing by Users::RegistrationsController#edit as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 273)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:49:39 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 922)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 2936)
+Completed 200 OK in 16ms (Views: 13.8ms | ActiveRecord: 0.0ms | Allocations: 3571)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-05 18:50:09 +0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 116)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1315)
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 3332)
+Completed 200 OK in 17ms (Views: 14.8ms | ActiveRecord: 0.0ms | Allocations: 3955)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:50:10 +0300
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 384)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:50:10 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 924)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 2939)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 3576)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-05 18:50:13 +0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 116)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1315)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 3332)
+Completed 200 OK in 14ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 3952)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:50:18 +0300
+Processing by Users::RegistrationsController#edit as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 270)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:50:18 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 922)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 2936)
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 3568)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-12-05 18:51:28 +0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"paliostomi@yandex.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "paliostomi@yandex.ru"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/edit
+Completed 303 See Other in 213ms (ActiveRecord: 0.3ms | Allocations: 2373)
+
+
+Started GET "/users/edit" for ::1 at 2023-12-05 18:51:29 +0300
+Processing by Users::RegistrationsController#edit as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1485)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 3503)
+Completed 200 OK in 17ms (Views: 12.7ms | ActiveRecord: 0.2ms | Allocations: 5221)
+
+
+Started DELETE "/users" for ::1 at 2023-12-05 18:51:37 +0300
+Processing by Users::RegistrationsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (5.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 16ms (ActiveRecord: 6.8ms | Allocations: 4359)
+
+
+Started GET "/" for ::1 at 2023-12-05 18:51:37 +0300
+Processing by HomeController#index as TURBO_STREAM
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms | Allocations: 420)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-05 18:51:37 +0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 117)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 927)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 2941)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.0ms | Allocations: 3561)
+
+
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (6.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateCourses (20240109194414)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (38.4ms)[0m  [1m[35mCREATE TABLE "courses" ("id" bigserial primary key, "name" character varying, "description" character varying, "duration" character varying, "date" character varying, "audit" character varying, "price" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240109194414') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+Started GET "/" for ::1 at 2024-01-09 23:38:02 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20240109195341_add_courses_to_users.rb
+
+
+):
+  
+activerecord (7.1.2) lib/active_record/migration.rb:754:in `check_pending_migrations'
+activerecord (7.1.2) lib/active_record/migration.rb:643:in `block (2 levels) in call'
+activesupport (7.1.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.2) lib/active_record/migration.rb:648:in `block in call'
+activerecord (7.1.2) lib/active_record/migration.rb:640:in `synchronize'
+activerecord (7.1.2) lib/active_record/migration.rb:640:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.8) lib/rack/method_override.rb:28:in `call'
+rack (3.0.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.2) lib/rails/engine.rb:529:in `call'
+puma (6.4.0) lib/puma/configuration.rb:272:in `call'
+puma (6.4.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.0) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.0) lib/puma/server.rb:443:in `process_client'
+puma (6.4.0) lib/puma/server.rb:241:in `block in run'
+puma (6.4.0) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+Started GET "/" for ::1 at 2024-01-09 23:40:12 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20240109195341_add_courses_to_users.rb
+
+
+):
+  
+activerecord (7.1.2) lib/active_record/migration.rb:754:in `check_pending_migrations'
+activerecord (7.1.2) lib/active_record/migration.rb:643:in `block (2 levels) in call'
+activesupport (7.1.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.2) lib/active_record/migration.rb:648:in `block in call'
+activerecord (7.1.2) lib/active_record/migration.rb:640:in `synchronize'
+activerecord (7.1.2) lib/active_record/migration.rb:640:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.8) lib/rack/method_override.rb:28:in `call'
+rack (3.0.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.2) lib/rails/engine.rb:529:in `call'
+puma (6.4.0) lib/puma/configuration.rb:272:in `call'
+puma (6.4.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.0) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.0) lib/puma/server.rb:443:in `process_client'
+puma (6.4.0) lib/puma/server.rb:241:in `block in run'
+puma (6.4.0) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started POST "/rails/actions" for ::1 at 2024-01-09 23:40:24 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+  
+SyntaxError (D:/RubyProj/art_studio_app/db/migrate/20240109195341_add_courses_to_users.rb:7: syntax error, unexpected end-of-input):
+  
+db/migrate/20240109195341_add_courses_to_users.rb:7: syntax error, unexpected end-of-input
+activerecord (7.1.2) lib/active_record/migration.rb:1187:in `load'
+activerecord (7.1.2) lib/active_record/migration.rb:1187:in `load_migration'
+activerecord (7.1.2) lib/active_record/migration.rb:1181:in `migration'
+activerecord (7.1.2) lib/active_record/migration.rb:1177:in `disable_ddl_transaction'
+activerecord (7.1.2) lib/active_record/migration.rb:1586:in `use_transaction?'
+activerecord (7.1.2) lib/active_record/migration.rb:1578:in `ddl_transaction'
+activerecord (7.1.2) lib/active_record/migration.rb:1527:in `execute_migration_in_transaction'
+activerecord (7.1.2) lib/active_record/migration.rb:1502:in `each'
+activerecord (7.1.2) lib/active_record/migration.rb:1502:in `migrate_without_lock'
+activerecord (7.1.2) lib/active_record/migration.rb:1447:in `block in migrate'
+activerecord (7.1.2) lib/active_record/migration.rb:1599:in `with_advisory_lock'
+activerecord (7.1.2) lib/active_record/migration.rb:1447:in `migrate'
+activerecord (7.1.2) lib/active_record/migration.rb:1273:in `up'
+activerecord (7.1.2) lib/active_record/migration.rb:1248:in `migrate'
+activerecord (7.1.2) lib/active_record/tasks/database_tasks.rb:243:in `migrate'
+activerecord (7.1.2) lib/active_record/migration.rb:138:in `block in <class:PendingMigrationError>'
+activesupport (7.1.2) lib/active_support/actionable_error.rb:30:in `dispatch'
+actionpack (7.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.8) lib/rack/method_override.rb:28:in `call'
+rack (3.0.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.2) lib/rails/engine.rb:529:in `call'
+puma (6.4.0) lib/puma/configuration.rb:272:in `call'
+puma (6.4.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.0) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.0) lib/puma/server.rb:443:in `process_client'
+puma (6.4.0) lib/puma/server.rb:241:in `block in run'
+puma (6.4.0) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddCoursesToUsers (20240109195341)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "courses_users" ("user_id" bigint, "course_id" bigint)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE INDEX "index_courses_users_on_user_id" ON "courses_users" ("user_id")[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE INDEX "index_courses_users_on_course_id" ON "courses_users" ("course_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240109195341') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/rails/actions" for ::1 at 2024-01-09 23:49:18 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2770318220799858855)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2770318220799858855)[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-01-09 23:49:19 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 14ms (ActiveRecord: 0.0ms | Allocations: 2133)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-01-09 23:49:20 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.0ms | Allocations: 344)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 38.6ms | Allocations: 4416)
+  Rendered layout layouts/application.html.erb (Duration: 145.2ms | Allocations: 40644)
+Completed 200 OK in 225ms (Views: 174.9ms | ActiveRecord: 3.4ms | Allocations: 61159)
+
+
+Started GET "/users/sign_up" for ::1 at 2024-01-09 23:49:27 +0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 222)
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 128)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2230)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 4252)
+Completed 200 OK in 74ms (Views: 19.8ms | ActiveRecord: 0.0ms | Allocations: 10855)
+
+
+Started POST "/users" for ::1 at 2024-01-09 23:50:04 +0300
+Processing by Users::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"paliostomi@yandex.ru", "first_name"=>"Анастасия", "last_name"=>"Цхомария", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Зарегистирироваться!"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (5.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "paliostomi@yandex.ru"], ["LIMIT", 1]]
+  [1m[36mUser Create (3.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "created_at", "updated_at", "encrypted_password", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Анастасия"], ["last_name", "Цхомария"], ["email", "paliostomi@yandex.ru"], ["created_at", "2024-01-09 20:50:05.129607"], ["updated_at", "2024-01-09 20:50:05.129607"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 291ms (ActiveRecord: 9.7ms | Allocations: 14483)
+
+
+Started GET "/" for ::1 at 2024-01-09 23:50:05 +0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:3:in `index'
+Redirected to http://localhost:3000/users/edit
+Completed 302 Found in 7ms (ActiveRecord: 0.4ms | Allocations: 1389)
+
+
+Started GET "/users/edit" for ::1 at 2024-01-09 23:50:05 +0300
+Processing by Users::RegistrationsController#edit as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 13)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2180)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 4200)
+Completed 200 OK in 20ms (Views: 14.4ms | ActiveRecord: 0.3ms | Allocations: 6149)
+
+
+Started GET "/profile" for ::1 at 2024-01-09 23:50:09 +0300
+  
+AbstractController::ActionNotFound (The action 'profile' could not be found for HomeController):
+  
+actionpack (7.1.2) lib/abstract_controller/base.rb:155:in `process'
+actionview (7.1.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.0.8) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.8) lib/rack/etag.rb:29:in `call'
+rack (3.0.8) lib/rack/conditional_get.rb:31:in `call'
+rack (3.0.8) lib/rack/head.rb:15:in `call'
+actionpack (7.1.2) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.2) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.2) lib/active_record/migration.rb:654:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.8) lib/rack/method_override.rb:28:in `call'
+rack (3.0.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.2) lib/rails/engine.rb:529:in `call'
+puma (6.4.0) lib/puma/configuration.rb:272:in `call'
+puma (6.4.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.0) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.0) lib/puma/server.rb:443:in `process_client'
+puma (6.4.0) lib/puma/server.rb:241:in `block in run'
+puma (6.4.0) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/profile" for ::1 at 2024-01-09 23:52:30 +0300
+Processing by HomeController#user as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/user.html within layouts/application
+  Rendered home/user.html within layouts/application (Duration: 1.0ms | Allocations: 87)
+  Rendered layout layouts/application.html.erb (Duration: 48.9ms | Allocations: 13939)
+Completed 200 OK in 54ms (Views: 52.5ms | ActiveRecord: 0.0ms | Allocations: 14676)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:02:02 +0300
+Processing by HomeController#user as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/user.html within layouts/application
+  Rendered home/user.html within layouts/application (Duration: 0.9ms | Allocations: 81)
+  Rendered layout layouts/application.html.erb (Duration: 36.0ms | Allocations: 13941)
+Completed 200 OK in 42ms (Views: 40.5ms | ActiveRecord: 0.0ms | Allocations: 14670)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:02:10 +0300
+Processing by HomeController#user as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/user.html within layouts/application
+  Rendered home/user.html within layouts/application (Duration: 0.1ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 2251)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 2508)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:08:00 +0300
+Processing by HomeController#user as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/user.html within layouts/application
+  Rendered home/user.html within layouts/application (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 2227)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 2483)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:11:31 +0300
+Processing by HomeController#user as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/user.html within layouts/application
+  Rendered home/user.html within layouts/application (Duration: 0.8ms | Allocations: 80)
+  Rendered layout layouts/application.html.erb (Duration: 30.3ms | Allocations: 13934)
+Completed 200 OK in 36ms (Views: 34.4ms | ActiveRecord: 0.0ms | Allocations: 14663)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:15:05 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (4.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#user as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/user.html within layouts/application
+  Rendered home/user.html within layouts/application (Duration: 0.6ms | Allocations: 131)
+  Rendered layout layouts/application.html.erb (Duration: 131.1ms | Allocations: 42242)
+Completed 200 OK in 158ms (Views: 148.5ms | ActiveRecord: 0.0ms | Allocations: 46380)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:19:09 +0300
+Processing by HomeController#user as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/user.html within layouts/application
+  Rendered home/user.html within layouts/application (Duration: 0.9ms | Allocations: 80)
+  Rendered layout layouts/application.html.erb (Duration: 64.9ms | Allocations: 13712)
+Completed 200 OK in 72ms (Views: 68.9ms | ActiveRecord: 0.0ms | Allocations: 14492)
+
+
+Started GET "/users/edit" for ::1 at 2024-01-10 00:19:12 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 231)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 30.3ms | Allocations: 4749)
+  Rendered layout layouts/application.html.erb (Duration: 41.6ms | Allocations: 6850)
+Completed 200 OK in 270ms (Views: 48.7ms | ActiveRecord: 31.2ms | Allocations: 29626)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:19:15 +0300
+Processing by HomeController#user as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/user.html within layouts/application
+  Rendered home/user.html within layouts/application (Duration: 0.1ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 2222)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 2485)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:21:55 +0300
+Processing by HomeController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:11:in `profile'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 4.3ms | Allocations: 8202)
+
+
+  
+NoMethodError (undefined method `courses' for #<User id: 3, first_name: "Анастасия", last_name: "Цхомария", email: "paliostomi@yandex.ru", created_at: "2024-01-09 20:50:05.129607000 +0000", updated_at: "2024-01-09 20:50:05.129607000 +0000">):
+  
+app/controllers/home_controller.rb:12:in `profile'
+Started GET "/profile" for ::1 at 2024-01-10 00:24:43 +0300
+Processing by HomeController#profile as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:11:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering home/profile.html within layouts/application
+  Rendered home/profile.html within layouts/application (Duration: 0.8ms | Allocations: 81)
+  Rendered layout layouts/application.html.erb (Duration: 27.9ms | Allocations: 13738)
+Completed 200 OK in 89ms (Views: 31.8ms | ActiveRecord: 4.0ms | Allocations: 29478)
+
+
+Started GET "/users/edit" for ::1 at 2024-01-10 00:24:51 +0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.7ms | Allocations: 214)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 11.0ms | Allocations: 2438)
+  Rendered layout layouts/application.html.erb (Duration: 33.3ms | Allocations: 4533)
+Completed 200 OK in 52ms (Views: 44.6ms | ActiveRecord: 0.3ms | Allocations: 7103)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:24:54 +0300
+Processing by HomeController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:11:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering home/profile.html within layouts/application
+  Rendered home/profile.html within layouts/application (Duration: 0.1ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 2030)
+Completed 200 OK in 20ms (Views: 10.9ms | ActiveRecord: 1.2ms | Allocations: 4133)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:43:28 +0300
+Processing by HomeController#profile as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:11:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering home/profile.html within layouts/application
+  Rendered home/profile.html within layouts/application (Duration: 0.6ms | Allocations: 80)
+  Rendered layout layouts/application.html.erb (Duration: 46.9ms | Allocations: 13737)
+Completed 200 OK in 301ms (Views: 51.6ms | ActiveRecord: 8.0ms | Allocations: 27532)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:44:22 +0300
+Processing by HomeController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:11:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering home/profile.html.erb within layouts/application
+  [1m[36mCourse Load (2.0ms)[0m  [1m[34mSELECT "courses".* FROM "courses" INNER JOIN "courses_users" ON "courses"."id" = "courses_users"."course_id" WHERE "courses_users"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/home/profile.html.erb:12
+  Rendered home/profile.html.erb within layouts/application (Duration: 28.1ms | Allocations: 7059)
+  Rendered layout layouts/application.html.erb (Duration: 56.9ms | Allocations: 20689)
+Completed 200 OK in 93ms (Views: 54.8ms | ActiveRecord: 13.3ms | Allocations: 31991)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 00:44:30 +0300
+Processing by HomeController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:11:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering home/profile.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" INNER JOIN "courses_users" ON "courses"."id" = "courses_users"."course_id" WHERE "courses_users"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/home/profile.html.erb:12
+  Rendered home/profile.html.erb within layouts/application (Duration: 2.8ms | Allocations: 886)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 2903)
+Completed 200 OK in 19ms (Views: 12.3ms | ActiveRecord: 1.1ms | Allocations: 5016)
+
+
+Started GET "/courses/new" for ::1 at 2024-01-10 00:44:35 +0300
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:15:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering courses/new.html.erb within layouts/application
+  Rendered courses/_form.html.erb (Duration: 2.4ms | Allocations: 1891)
+  Rendered courses/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2305)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 4325)
+Completed 200 OK in 53ms (Views: 16.3ms | ActiveRecord: 0.3ms | Allocations: 14208)
+
+
+Started POST "/courses" for ::1 at 2024-01-10 00:45:53 +0300
+Processing by CoursesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "course"=>{"name"=>"Лепка из глины", "description"=>"На этом курсе вы сможете создать собственное произведение искусства.", "date"=>"10.07.2024", "audit"=>"015", "price"=>"599.99"}, "commit"=>"Create Course"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:85:in `course_params'
+[31mUnpermitted parameters: :date, :audit. Context: { controller: CoursesController, action: create, request: #<ActionDispatch::Request:0x000001df8310ebb8>, params: {"authenticity_token"=>"[FILTERED]", "course"=>{"name"=>"Лепка из глины", "description"=>"На этом курсе вы сможете создать собственное произведение искусства.", "date"=>"10.07.2024", "audit"=>"015", "price"=>"599.99"}, "commit"=>"Create Course", "controller"=>"courses", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering courses/new.html.erb within layouts/application
+  Rendered courses/_form.html.erb (Duration: 2.5ms | Allocations: 2998)
+  Rendered courses/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 3133)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 5146)
+Completed 422 Unprocessable Entity in 28ms (Views: 19.7ms | ActiveRecord: 0.3ms | Allocations: 7598)
+
+
+Started POST "/courses" for ::1 at 2024-01-10 00:48:53 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CoursesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "course"=>{"name"=>"Лепка из глины", "description"=>"На этом курсе вы сможете создать собственное произведение искусства.", "date"=>"10.07.2024", "audit"=>"015", "price"=>"599.99"}, "commit"=>"Create Course"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:85:in `course_params'
+  Rendering layout layouts/application.html.erb
+  Rendering courses/new.html.erb within layouts/application
+  Rendered courses/_form.html.erb (Duration: 2.4ms | Allocations: 1927)
+  Rendered courses/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2364)
+  Rendered layout layouts/application.html.erb (Duration: 57.9ms | Allocations: 15990)
+Completed 422 Unprocessable Entity in 93ms (Views: 64.8ms | ActiveRecord: 6.9ms | Allocations: 28451)
+
+
+Started GET "/courses/new" for ::1 at 2024-01-10 00:50:50 +0300
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:15:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering courses/new.html.erb within layouts/application
+  Rendered courses/_form.html.erb (Duration: 3.4ms | Allocations: 1849)
+  Rendered courses/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2296)
+  Rendered layout layouts/application.html.erb (Duration: 50.1ms | Allocations: 15927)
+Completed 200 OK in 86ms (Views: 55.7ms | ActiveRecord: 5.4ms | Allocations: 27456)
+
+
+Started POST "/courses" for ::1 at 2024-01-10 00:51:15 +0300
+Processing by CoursesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "course"=>{"name"=>"Лепка из глины", "duration"=>"1,5 часов", "description"=>"На этом курсе вы сможете создать собственное произведение искусства.", "date"=>"10.07.2024", "audit"=>"015", "price"=>"599.99"}, "commit"=>"Create Course"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:85:in `course_params'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courses_controller.rb:29:in `block in create'
+  [1m[36mCourse Create (12.1ms)[0m  [1m[32mINSERT INTO "courses" ("name", "description", "duration", "date", "audit", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Лепка из глины"], ["description", "На этом курсе вы сможете создать собственное произведение искусства."], ["duration", "1,5 часов"], ["date", "10.07.2024"], ["audit", "015"], ["price", "599.99"], ["created_at", "2024-01-09 21:51:15.974790"], ["updated_at", "2024-01-09 21:51:15.974790"]]
+  ↳ app/controllers/courses_controller.rb:29:in `block in create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courses_controller.rb:29:in `block in create'
+Redirected to http://localhost:3000/courses
+Completed 302 Found in 28ms (ActiveRecord: 13.9ms | Allocations: 4060)
+
+
+Started GET "/courses" for ::1 at 2024-01-10 00:51:16 +0300
+Processing by CoursesController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.html.erb:8
+  Rendered courses/_course.html.erb (Duration: 0.7ms | Allocations: 322)
+  Rendered courses/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 2619)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 2704)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.4ms | Allocations: 3107)
+
+
+  
+ActionView::Template::Error (undefined method `course_path' for #<ActionView::Base:0x0000000002c768>):
+     8:   <% @courses.each do |course| %>
+     9:     <%= render course %>
+    10:     <p>
+    11:       <%= link_to "Show this course", course %>
+    12:     </p>
+    13:   <% end %>
+    14: </div>
+  
+app/views/courses/index.html.erb:11
+app/views/courses/index.html.erb:8
+Started GET "/courses/new" for ::1 at 2024-01-10 01:02:24 +0300
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:15:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering courses/new.html.erb within layouts/application
+  Rendered courses/_form.html.erb (Duration: 1.6ms | Allocations: 1190)
+  Rendered courses/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1333)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 3384)
+Completed 200 OK in 139ms (Views: 10.5ms | ActiveRecord: 6.7ms | Allocations: 7360)
+
+
+Started GET "/courses" for ::1 at 2024-01-10 01:02:28 +0300
+Processing by CoursesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (1.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.html.erb:8
+  Rendered courses/_course.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered courses/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1663)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 1748)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.2ms | Allocations: 2006)
+
+
+  
+ActionView::Template::Error (undefined method `course_path' for #<ActionView::Base:0x0000000002cb78>):
+     8:   <% @courses.each do |course| %>
+     9:     <%= render course %>
+    10:     <p>
+    11:       <%= link_to "Show this course", course %>
+    12:     </p>
+    13:   <% end %>
+    14: </div>
+  
+app/views/courses/index.html.erb:11
+app/views/courses/index.html.erb:8
+Started GET "/courses" for ::1 at 2024-01-10 01:05:34 +0300
+Processing by CoursesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.html.erb:8
+  Rendered courses/_course.html.erb (Duration: 1.1ms | Allocations: 314)
+  Rendered courses/index.html.erb within layouts/application (Duration: 29.9ms | Allocations: 5264)
+  Rendered layout layouts/application.html.erb (Duration: 60.3ms | Allocations: 19089)
+Completed 200 OK in 72ms (Views: 56.1ms | ActiveRecord: 7.8ms | Allocations: 22288)
+
+
+Started GET "/courses/1" for ::1 at 2024-01-10 01:05:40 +0300
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:80:in `set_course'
+  Rendering layout layouts/application.html.erb
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/_course.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered courses/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1328)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 1413)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms | Allocations: 2783)
+
+
+  
+ActionView::Template::Error (undefined method `edit_course_path' for #<ActionView::Base:0x00000000031858>):
+    4: <%= render @course %>
+    5: 
+    6: <div>
+    7:   <%= link_to "Edit this course", edit_course_path(@course) %> |
+    8:   <%= link_to "Back to courses", courses_path %> |
+    9:   <%= link_to "Add to profile", :add_course, id: @course.id %>
+   10:   <%= button_to "Destroy this course", @course, method: :delete %>
+  
+app/views/courses/show.html.erb:7
+Started GET "/courses/1" for ::1 at 2024-01-10 01:07:02 +0300
+  
+SyntaxError (D:/RubyProj/art_studio_app/config/routes.rb:25: syntax error, unexpected `end'):
+  
+config/routes.rb:25: syntax error, unexpected `end'
+Started GET "/courses/1" for ::1 at 2024-01-10 01:07:22 +0300
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:80:in `set_course'
+  Rendering layout layouts/application.html.erb
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/_course.html.erb (Duration: 1.6ms | Allocations: 314)
+  Rendered courses/show.html.erb within layouts/application (Duration: 7.3ms | Allocations: 1267)
+  Rendered layout layouts/application.html.erb (Duration: 34.1ms | Allocations: 14893)
+Completed 200 OK in 59ms (Views: 38.4ms | ActiveRecord: 4.9ms | Allocations: 22961)
+
+
+Started GET "/courses/add/1" for ::1 at 2024-01-10 01:07:29 +0300
+Processing by CoursesController#add as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:80:in `set_course'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:64:in `add'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:65:in `add'
+  [1m[36mCourse Load (1.9ms)[0m  [1m[34mSELECT "courses".* FROM "courses" INNER JOIN "courses_users" ON "courses"."id" = "courses_users"."course_id" WHERE "courses_users"."user_id" = $1 AND "courses"."id" = $2 ORDER BY "courses"."id" ASC LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:66:in `add'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courses_controller.rb:66:in `add'
+  [1m[36mUser::HABTM_Courses Create (2.9ms)[0m  [1m[32mINSERT INTO "courses_users" ("user_id", "course_id") VALUES ($1, $2)[0m  [["user_id", 3], ["course_id", 1]]
+  ↳ app/controllers/courses_controller.rb:66:in `add'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courses_controller.rb:66:in `add'
+Redirected to http://localhost:3000/courses/1
+Completed 302 Found in 72ms (ActiveRecord: 15.1ms | Allocations: 14645)
+
+
+Started GET "/courses/1" for ::1 at 2024-01-10 01:07:30 +0300
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:80:in `set_course'
+  Rendering layout layouts/application.html.erb
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/_course.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered courses/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 562)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 2575)
+Completed 200 OK in 12ms (Views: 7.8ms | ActiveRecord: 0.3ms | Allocations: 3277)
+
+
+Started GET "/profile" for ::1 at 2024-01-10 01:07:32 +0300
+Processing by HomeController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:11:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering home/profile.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" INNER JOIN "courses_users" ON "courses"."id" = "courses_users"."course_id" WHERE "courses_users"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/home/profile.html.erb:12
+  Rendered courses/_course.html.erb (Duration: 0.2ms | Allocations: 31)
+  Rendered home/profile.html.erb within layouts/application (Duration: 7.9ms | Allocations: 3135)
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 5155)
+Completed 200 OK in 40ms (Views: 26.2ms | ActiveRecord: 0.9ms | Allocations: 8732)
+
+
+Started GET "/courses/1" for ::1 at 2024-01-10 01:07:45 +0300
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:80:in `set_course'
+  Rendering layout layouts/application.html.erb
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/_course.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered courses/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 562)
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 2575)
+Completed 200 OK in 25ms (Views: 18.3ms | ActiveRecord: 0.3ms | Allocations: 3277)
+
+
