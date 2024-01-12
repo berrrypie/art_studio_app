@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
     before_action :set_course, only: %i[ add show edit update destroy ]
+    before_action :authenticate_user!, only: %i[ new edit create update destroy ]
 
   # GET /courses or /courses.json
   def index
@@ -14,11 +15,23 @@ class CoursesController < ApplicationController
   def new
     authenticate_user! unless user_signed_in?
     @course = Course.new
+    begin
+      authorize @course
+    rescue Pundit::NotAuthorizedError
+      redirect_to root_path
+      return
+    end
   end
 
   # GET /courses/1/edit
   def edit
     authenticate_user! unless user_signed_in?
+    begin
+      authorize @course
+    rescue Pundit::NotAuthorizedError
+      redirect_to root_path
+      return
+    end
   end
 
   # POST /courses or /courses.json
@@ -52,6 +65,12 @@ class CoursesController < ApplicationController
   # DELETE /courses/1 or /courses/1.json
   def destroy
     authenticate_user! unless user_signed_in?
+    begin
+      authorize @course
+    rescue Pundit::NotAuthorizedError
+      redirect_to root_path
+      return
+    end
     @course.destroy!
 
     respond_to do |format|

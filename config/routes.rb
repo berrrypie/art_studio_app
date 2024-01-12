@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # Маршруты для профилей
   get 'profiles/show'
   get '/profile', to: "home#profile", as: :profile
+  get 'teacher', to: 'teacher#index', as: :teacher_page
+  get 'tickets_users/buy/:id', to: 'tickets_users#buy', as: :courses_users_buy
+  get 'tickets_users/cancel/:id', to: 'tickets_users#cancel', as: :courses_users_cancel
 
   # Удаленные ресурсы для Devise
   devise_for :users, controllers: { registrations: "users/registrations" }

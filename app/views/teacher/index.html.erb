@@ -1,0 +1,18 @@
+<%= link_to 'Главная', courses_path %>
+
+<h1>Преподаватель</h1>
+
+<%= link_to 'Новый курс', new_course_path %>
+
+<h1>Все курсы</h1>
+
+<div id="courses">
+  <% @courses.each do |course| %>
+    <%= render course %>
+    <p>
+      <%= link_to "Подробнее", course %>
+      <%= link_to "Редактировать", edit_course_path(course) %>
+      <%= button_to "Удалить курс", course, method: :delete %>
+    </p>
+  <% end %>
+</div>

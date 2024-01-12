@@ -28,6 +28,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 gem "devise"
 
+gem "pundit", "~> 2.3"
+
 
 group :development, :test do
 

@@ -11,4 +11,12 @@ class HomeController < ApplicationController
     user = User.find(current_user.id)
     @courses = user.courses
   end
+  def teacher
+    begin
+      authorize Course, policy_class: HomePolicy
+    rescue Pundit::NotAuthorizedError
+      redirect_to root_path
+      return
+    end
+  end
 end
